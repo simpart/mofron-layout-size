@@ -1,0 +1,22 @@
+{
+  "name": "mofron-layout-size",
+  "version": "0.0.2",
+  "description": "size layout for mofron",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simpart/mofron-layout-size.git"
+  },
+  "keywords": [
+    "front-end"
+  ],
+  "author": "simparts",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/simpart/mofron-layout-size/issues"
+  },
+  "homepage": "https://github.com/simpart/mofron-layout-size#readme"
+}
