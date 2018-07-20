@@ -9,22 +9,33 @@
  */
 mofron.layout.Size = class extends mofron.Layout {
     
-    constructor (x_po, y) {
+    constructor (po, p2) {
         try {
             super();
             this.name('Size');
-            this.prmOpt(x_po, y);
-        } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
-    
-    layoutConts (idx, tgt) {
-        try {
-            tgt.size(
-                this.param()[0],
-                this.param()[1]
+            this.prmOpt(po, p2);
+            
+            this.getParam().check(
+                (x) => {
+                    try {
+                        if (('string' !== typeof x) && ('number' !== typeof x)) {
+                            throw new Error('invalid parameter');
+                        }
+                    } catch (e) {
+                        console.error(e.stack);
+                        throw e;
+                    }
+                },
+                (y) => {
+                    try {
+                        if (('string' !== typeof y) && ('number' !== typeof y)) {
+                            throw new Error('invalid parameter');
+                        }
+                    } catch (e) {
+                        console.error(e.stack);
+                        throw e;
+                    }
+                }
             );
         } catch (e) {
             console.error(e.stack);
@@ -32,14 +43,12 @@ mofron.layout.Size = class extends mofron.Layout {
         }
     }
     
-    height (prm) {
+    contents (idx, tgt) {
         try {
-            if (undefined === prm) {
-                /* getter */
-                return (undefined === this.m_height) ? null : this.m_height;
-            }
-            /* setter */
-            this.m_height = prm;
+            tgt.size(
+                this.value()[0],
+                this.value()[1]
+            );
         } catch (e) {
             console.error(e.stack);
             throw e;

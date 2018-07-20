@@ -1,6 +1,6 @@
 {
   "name": "mofron-layout-size",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "size layout for mofron",
   "main": "index.js",
   "scripts": {
