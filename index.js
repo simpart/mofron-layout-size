@@ -13,30 +13,9 @@ mofron.layout.Size = class extends mofron.Layout {
         try {
             super();
             this.name('Size');
+            this.prmMap('width', 'height');
             this.prmOpt(po, p2);
             
-            this.getParam().check(
-                (x) => {
-                    try {
-                        if (('string' !== typeof x) && ('number' !== typeof x)) {
-                            throw new Error('invalid parameter');
-                        }
-                    } catch (e) {
-                        console.error(e.stack);
-                        throw e;
-                    }
-                },
-                (y) => {
-                    try {
-                        if (('string' !== typeof y) && ('number' !== typeof y)) {
-                            throw new Error('invalid parameter');
-                        }
-                    } catch (e) {
-                        console.error(e.stack);
-                        throw e;
-                    }
-                }
-            );
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -45,10 +24,47 @@ mofron.layout.Size = class extends mofron.Layout {
     
     contents (idx, tgt) {
         try {
-            tgt.size(
-                this.value()[0],
-                this.value()[1]
-            );
+            if (null !== this.width()) {
+                tgt.width(this.width());
+            }
+            
+            if (null !== this.height()) {
+                tgt.height(this.height());
+            }
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
+    width (prm) {
+        try {
+            if (undefined === prm) {
+                /* getter */
+                return (undefined === this.m_width) ? null : this.m_width;
+            }
+            /* setter */
+            if (('string' !== typeof prm) && ('number' !== typeof prm)) {
+                throw new Error('invalid parameter');
+            }
+            this.m_width = prm;
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
+    height (prm) {
+        try {
+            if (undefined === prm) {
+                /* getter */
+                return (undefined === this.m_height) ? null : this.m_height;
+            }
+            /* setter */
+            if (('string' !== typeof prm) && ('number' !== typeof prm)) {
+                throw new Error('invalid parameter');
+            }
+            this.m_height = prm;
         } catch (e) {
             console.error(e.stack);
             throw e;
